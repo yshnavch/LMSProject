@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@500&family=PT+Serif&family=Quicksand:wght@300&display=swap');
+.body{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px -150px 100px white;
+    
+}
+body{
+     overflow-x: hidden;   
+}
+
+.coursemenu{
+    background-color: #05CE91;
+    font-family: 'Quicksand', sans-serif;
+    height: 100% !important;
+    width: 300px !important;    
+    color: white;
+    padding-left: 10px;
+}
+
+
+.courselist li{
+    list-style: none;
+    color: white;
+    margin: 2px;
+    width: fit-content;
+}
+
+.lesson1, .prev{
+    display: none;
+}
+.lesson{
+    
+    /* background-color: pink; */
+
+    margin-left: 30px;
+    
+}
+
+.lesson1{
+    z-index: 10;
+    /* background-color: pink; */
+    width: 100% ;
+    
+}
+
+.lesson1 h1{
+    margin-left: 0px;    
+}
+
+.lesson1 iframe{
+    width: 800px;
+    height: 500px;
+    border: 2px solid black;
+    padding: 20px;  
+    border-radius: 10px; 
+    margin-bottom: 50px; 
+    margin-right: 200px;
+}
+
+
+.intro{
+    
+    font-family: 'PT Serif', serif;
+}
+.intro h1, .lessonnumber{
+    font-family: 'Encode Sans SC', sans-serif;
+}
+
+#header{
+    position: relative;
+    width: 100vw;
+    height: 90vh;
+    background-image: url(https://www.geeksread.com/wp-content/uploads/2018/04/DOM.png);
+    background-position: center;
+   background-attachment: fixed;
+    background-size: cover;
+    
+}
+.content{
+    height: auto;
+}
+
+.completedbtn{
+    z-index: 100;
+    border: 2px solid white;
+    background-color: transparent;
+    padding: 10px;
+    margin-left: 30px;
+    border-radius: 9px;
+    transition: 1s;
+}
+.dash-dp{
+    top: 0;
+    /* background-image: url('dp.JPG'); */
+    z-index: 10;
+    position: fixed;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-size: cover;
+}
+.dash-dp button{
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 100%;
+    border: 2px black solid;
+    cursor: pointer;
+}
+.dash-dp button i{
+    right: 0;
+    font-size:28px;
+    background-color: transparent;
+    
+}
+.viewtask a{
+    text-decoration: underline;
+    color: black;
+    font-size: 20px;
+    font-family:'Fira Sans Condensed' ;
+}
+.completedbtn a{
+    color: white;
+    text-decoration: none;
+}
+
+.active.completedbtn{
+    background-color: white;
+    color: #05CE91;
+}
+.active.completedbtn a{
+    color: #05CE91;
+}
+
+
+.lessonopen, .buttons button{
+    cursor: pointer;
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: white;
+    background-image: linear-gradient(#05CE91,#1b8537) ;
+    background-color: -internal-light-dark(white, white);
+    border: 1px #41e06c solid;
+}
+
+.ytp-pause-overlay.ytp-scroll-min{
+    display: none;
+}
+
+.ytp-expand-pause-overlay .ytp-pause-overlay {
+    display: none;
+}
+
+.introopen{
+    padding-bottom: 2px;
+    border-bottom: 2px solid white;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+@media(max-width:600px){
+    
+    .coursemenu{
+        height: auto;
+        width: 100%;
+    }
+    .courselist{
+        width: 100%;
+    }
+    .lesson1 iframe{
+        width: 300px;
+        height: auto;
+        margin-left: 20px;
+    }
+    .buttons{
+        max-width: 400px;
+    }
+    .lesson{
+        margin-left: 0;
+        min-width: 100px;
+    }
+    .body{
+        width: 100vw;
+    }
+    #header{
+        height: 40vh;
+    }
+
+}
+
+@media(max-width:1250px){
+    .lesson iframe{
+        width: 600px;
+        height: 400px;
+    }
+}
+@media(max-width:1045px){
+    .lesson iframe{
+        width: 400px;
+        height: 250px;
+    }
+}
+@media(max-width:845px){
+    .body{
+        display: flex;
+        flex-direction: column;
+    }
+    .coursemenu{
+        place-self: center;
+        margin: 0 auto;
+        height: fit-content;
+    }
+    .lesson iframe{
+        width: 600px;
+        height: 400px;
+    }
+    .content{
+        margin-top: 20px;
+        width: 100%;
+        background-color: #05CE91;
+        padding-bottom: 20px;
+    }
+}
+
+@media(max-width:745px){
+    .lesson iframe{
+        width: 400px;
+        height: 250px;
+    }
+    #header{
+        height: 50vh;
+        background-attachment:scroll;
+        background-repeat: no-repeat;
+    }
+}
+
+@media(max-width:500px){
+    .lesson iframe{
+        width: 300px;
+        height: 150px;
+    }
+    .dash-dp{
+        right: 0;
+    }
+    .dash-dp button{
+        padding: 8px;
+    }
+    .dash-dp button i{
+        font-size: 12px;
+    }
+}

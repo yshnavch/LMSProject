@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Management system</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+@import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@700&family=Poppins:wght@200&display=swap');
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/stacked-peaks-haikei\ \(1\).svg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.av.active:before {
+  content: "\f1db";
+  font-style: normal;
+} 
+
+.st.is-active:before {
+  content: "\f05d";
+}
+.profile{
+    margin-top: 20px;
+    display: none;
+    transform: translateX(100%);
+    background-image: url('/uploads/<%= user.image %>');
+    right: 0;
+    border-radius: 10px;
+    background-size: cover;
+    width: 400px;
+    position:absolute;
+    height: fit-content;
+    top: 0; 
+    z-index: 10000; 
+    transition: 0.5s;
+}
+.dpcard{
+    color: white;
+    line-height: 0px;
+    margin: 10px auto;
+    position: relative;
+    place-self: center;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 100px );
+    -webkit-backdrop-filter: blur( 100px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.3 );
+}
+.dpcard h2{
+    margin-top: 20px;
+    font-family: 'Comfortaa', cursive;
+    font-size: 20px;
+}
+
+.profilecard{
+    padding: 30px 0;
+    width: 100%;
+    display: flex;
+    height: 100%;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    text-align: center;
+    place-items: center;
+    backdrop-filter: blur( 10px );
+    -webkit-backdrop-filter: blur( 10px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    justify-content: center;
+    align-items: center;
+}
+#hide{
+    font-size: 26px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+.dash-dp{
+    top: 0;
+    /* background-image: url('dp.JPG'); */
+    z-index: 10;
+    position: absolute;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-size: cover;
+}
+.dash-img{
+    background-image: url('/uploads/<%= user.image %>');
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-bottom: 20px;
+    border: 2px white black;
+    background-size: cover;
+    cursor: pointer;
+}
+
+/* .dash-img{
+    right: 0;
+    object-fit: contain;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 2px white solid;
+    cursor: pointer !important;
+} */
+.dash-dp button{
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 100%;
+    border: 2px black solid;
+    cursor: pointer;
+}
+.dash-dp button i{
+    right: 0;
+    font-size:28px;
+    background-color: transparent;
+    
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@200&display=swap'); */
+
+.taskcard{
+    position: absolute;
+    top: 100px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur(5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 1 );
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+    width:fit-content;
+    height: auto;
+    padding-bottom: 40px;
+    transform: translateX(0%);
+    transition: 0.5s;
+}
+.taskbody{
+    margin: 20px 50px;
+    z-index: 10;
+    position: relative;
+    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.heading{
+    position: absolute;
+    top: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.addtask{
+    border:3px solid  #05CE91;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+.addtask input{
+    border-style: none;
+    color: black;
+    padding: 5px 5px;
+    /* border-bottom: 2px solid white; */
+    background-color: white;
+    border-radius: 5px;
+    margin-right: 10px;
+    outline: none;
+    background-color: rgb(238, 238, 241);
+    border: 2px solid rgb(126, 124, 124);
+    margin-bottom: 10px;
+    margin-top: 5px;
+    transition: 0.3s;
+}
+.addtask input:focus{
+    background-color: white;
+    border: 2px solid #05CE91;
+}
+.taskaddbutton{
+    padding: 2px 10px;
+    border: 2px solid rgb(35, 138, 35);
+    border-style: solid;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(35, 138, 35);
+}
+
+.task{
+    display: flex;
+    padding: 5px;
+    margin: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: black;
+    border-bottom: 4px solid black;
+        
+}
+.task h2{
+    font-family: 'Encode Sans SC', sans-serif;
+    font-size: 18px;
+    margin: auto;
+    position: relative;
+}
+.task h3{
+    font-family: 'Comfortaa', cursive;
+    margin: 0;
+    font-size: 15px
+}
+.stat{
+    font-size: 20px;
+    z-index: 10;
+    padding: 2px;
+    margin: 2px;
+}
+#status{
+    color: rgb(15, 231, 15);
+    z-index: 1000;
+    /* background-color: brown; */
+    cursor: pointer;
+}
+
+.trash{
+    font-size: 20px;
+    z-index: 1000;
+    padding: 2px;
+    margin: 2px;
+}
+#close{
+    font-size: 26px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+.tasklist{
+    height: 300px;
+    overflow-y: scroll;
+    padding-right: 30px;
+}
+
+.tasklist::-webkit-scrollbar{
+    width: 10px;
+}
+.tasklist::-webkit-scrollbar-thumb{
+    background: #05CE91;
+    border-radius: 4px;
+}
+.dp{
+    background-image: url('/uploads/<%= user.image %>');
+    border: 2px rgb(94, 93, 93) solid;
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+}
+.edit{
+    position: absolute;
+    bottom: 20px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.452);
+    font-size: 15px;
+    font-family:'Fira Sans Condensed'
+}
+.viewtask a{
+    text-decoration: underline;
+    color: black;
+    font-size: 20px;
+    font-family:'Fira Sans Condensed' ;
+}
+
+/* .notcompleted, #completed{
+    position: absolute;
+} */
+
+/* .task button{
+    margin-top: 15px;
+} */
+@media(max-width:690px){
+            
+            .dash-dp{
+                right: 0;
+            }
+            .dash-img{
+                width: 30px;
+                height: 30px;
+            }
+            .dash-dp button{
+                padding: 8px;
+            }
+            .dash-dp button i{
+                font-size: 12px;
+            }
+            
+            .profile{
+                width: 300px;
+            }
+            .dpcard{
+                width: 200px;
+            }
+            .dp{
+                width: 150px;
+                height: 150px;
+            }
+            
+        }
+
+</style>
+<body>
+    <!-- <svg class="blob" style="position: absolute;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="black" fill-opacity="1" d="M0,256L48,240C96,224,192,192,288,170.7C384,149,480,139,576,149.3C672,160,768,192,864,218.7C960,245,1056,267,1152,277.3C1248,288,1344,288,1392,288L1440,288L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg> -->
+    <div class="dash-dp">
+        <!-- <img class="dash-img" src="dp.JPG" alt=""> -->
+        <p class="viewtask" style="color: black;"><a href="/dashboard">Dashboard</a></p>
+        <div class="dash-img"></div>
+        <a href="/logout"><button><i class="fa fa-sign-out" style="color: black;"></i></button></a>
+    </div>
+    <div class="heading">
+        <h1 style="color: #05CE91;">Manage Tasks</h1>
+    </div>
+    <div class="profile">
+        <div class="profilecard">
+            <i id="hide" class="fa fa-close" style="color: white;"></i>
+            <div class="dpcard">
+                
+                <div class="dp"></div>
+                <h2><%= user.name %></h2>
+                <h2><%= user.contact %></h2>
+                
+                <a class="edit" href="/edit"><i class="fa fa-pencil-square-o" style="font-size:24px ; font-weight: 600;"></i>Edit profile</a>
+            </div>            
+        </div>
+    </div>
+    <div class="taskcard" style="color: white;">
+        
+        <div class="taskbody">
+            
+              <div class="addtask">
+                <form action="/task/tasks" method="POST">
+                    <input type="text" placeholder=" Add Task" name="task" required>
+                    <input placeholder="Deadline" name="date" class="deadline" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" required />
+                    <button class="taskaddbutton" type="submit">Add</button>
+                </form>
+              </div>
+                
+            
+            
+            <div class="tasklist">
+              
+
+              <%if (records.tasks.length >0){ %>
+                <% records.tasks.forEach(function(row){ %>
+                  <div class="task">
+                      <div style="display: flex;flex-direction: column;">
+                        <h2><%= row.task %></h2>
+                        <h3>deadline: <%= row.deadline.toDateString() %> </h3>
+                      </div>
+                      <div class="stat">
+                        <a href="/task/editTask/<%= row._id %>">
+                            <%if (row.completed == false){ %>
+                                <i id="status" class="fa fa-circle-thin  st" ></i>
+                                
+                            <% } %>
+                            <%if (row.completed == true){ %>
+                                <i id="status" class="fa fa-check-circle-o av" ></i>
+                            <% } %>
+                            
+                        </a>
+                      </div>
+                      <div class="trash">
+                        <a href="/task/delete/<%= row._id %>"><i class="fa fa-trash" style="color: red;"></i></a>
+                      </div> 
+                    </div>
+                  
+              <% })} %>  
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        
+        var untick = document.getElementsByClassName("st");
+        var  tick = document.getElementsByClassName("av");
+        var i;
+        for (i = 0; i < untick.length; i++) {
+
+            untick[i].addEventListener('click',  function(){
+                 this.classList.toggle("is-active");
+                
+            });
+            
+        }
+            // stat[i].addEventListener('mouseover',  function(){
+            //     //console.log(stat.className)
+            //     this.className = 'fa fa-check-circle-o st';
+            // });
+            // stat[i].addEventListener('mouseleave', function(){
+            //     //console.log(stat.className)
+            //     this.className = 'fa fa-circle-thin st';
+            // });
+            var j;
+            for (j = 0; j < tick.length; j++) {
+
+            tick[j].addEventListener('click',  function(){
+                 this.classList.toggle("active");
+                
+            });
+            
+            }
+            
+            var profile = document.querySelector('.profile');
+            var hide = document.querySelector('#hide');
+
+
+
+            var view = document.querySelector('.dash-img').addEventListener('click', displayprofile);
+            function displayprofile(){
+                console.log('12345')
+                profile.style.display = 'unset'
+                setTimeout(() => profile.style.transform = 'translateX(0%)', 100)
+            }
+            hide.addEventListener('click',closeprofile)
+            function closeprofile(){
+                profile.style.transform = 'translateX(100%)';
+                setTimeout(() => profile.style.display = 'none', 100)
+            }      
+        
+
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

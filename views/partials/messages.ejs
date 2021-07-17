@@ -1,0 +1,28 @@
+
+    <% if(locals.errors){ %> <% errors.forEach(function(error) { %>
+    <div class="l-alert">
+      <%= error.msg %>
+    </div>
+    <% }); %>
+    <% } %> 
+    
+    <% if(success_msg != ''){ %>
+    <div class="s-alert">
+      <%= success_msg %>
+    </div>
+    <% } %> 
+    
+    <% if(error_msg != ''){ %>
+    <div class="e-alert">
+      <%= error_msg %>
+    </div>
+    <% } %>
+    
+    <% if(error != ''){ %>
+    <div class="e-alert">
+      <%= error %>
+    </div>
+    <% } %>
+
+
+

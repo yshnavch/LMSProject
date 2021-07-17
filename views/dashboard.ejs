@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Management system</title>
+    <link rel="stylesheet" href="/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<style>
+        .profile{
+    margin-top: 20px;
+    display: none;
+    transform: translateX(100%);
+    background-image: url('/uploads/<%= user.image %>');
+    right: 0;
+    border-radius: 10px;
+    background-size: cover;
+    width: 400px;
+    position:absolute;
+    height: fit-content;
+    top: 0; 
+    z-index: 10; 
+    transition: 0.5s;
+}
+.dash-img{
+    background-image: url('/uploads/<%= user.image %>');
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-bottom: 20px;
+    border: 2px black solid;
+    background-size: cover;
+    cursor: pointer;
+}
+.dp{
+    background-image: url('/uploads/<%= user.image %>');
+    border: 2px rgb(94, 93, 93) solid;
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+}
+</style>
+    <div class="dash-dp">
+        
+        <p class="viewtask"><a href="/task/tasks/<%= user._id %>">Tasks</a></p>
+        <div class="dash-img"></div>
+        <a href="/logout"><button><i class="fa fa-sign-out" style="color: black;"></i></button></a>
+    </div>
+    
+    <div class="profile">
+        <div class="profilecard">
+            <i id="hide" class="fa fa-close" style="color: white;"></i>
+            <div class="dpcard">
+                
+                <div class="dp"></div>
+                <h2><%= user.name %></h2>
+                <h2><%= user.contact %></h2>
+                
+                <a class="edit" href="/edit"><i class="fa fa-pencil-square-o" style="font-size:24px ; font-weight: 600;"></i>Edit profile</a>
+            </div>            
+        </div>
+    </div>
+    
+    <div class="dashboard">
+        <h4>Learning Management System</h4>
+        <h1>Dashboard</h1>
+    </div>
+    <%- include('./partials/messages'); %>
+    <div class="body">
+        <h2 class="ac">Available courses</h2>
+        <main class="page-content">
+            
+            
+            <div class="card">
+                <div class="content">
+                    <h2 class="title">DOM</h2>
+                    <p class="des">DOM for beginners</p>
+                    <a href="/courses/dom"><button class="btn">Visit Course</button></a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content">
+                    <h2 class="title">Javascript</h2>
+                    <p class="des">Javascript for beginners</p>
+                    <a href="/courses/js"><button class="btn">Visit Course</button></a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="content">
+                    <h2 class="title">NODE JS</h2>
+                    <p class="des">Node JS for beginners</p>
+                    <a href="/courses/node"><button class="btn">Visit Course</button></a>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="/dashboard.js"></script>
+</body>
+</html>
+
+
+

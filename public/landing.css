@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@700&family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+body{
+    /* background-image: linear-gradient(to left, #0F2027,#2C5364);   */
+    /* background-image: linear-gradient(to right, #008C8C,rgb(6, 88, 82));   */
+    /* width: 100vw;
+    height: 100vh; */
+    background-image: url('low-poly-grid-haikei.svg');
+    background-size: cover;
+    overflow-x: hidden;
+    
+}
+.salyicon{
+    width: 400px;
+    z-index: -10;
+    position: absolute;
+    
+    right:  450px;
+    /* box-shadow: 2px 2px 2px #2de65b; */
+    /* background-color: radial-gradient(grey,black); */
+    /* border-top-right-radius: 100%; */
+}
+
+.heading{
+    color: white;
+    /* text-align: center; */
+    position:relative;
+    /* max-width: 400px; */
+    top: 70px;
+    left: 100px;
+    /* transform: translate(00px,00px); */
+    transition: 3s;
+    opacity: 0;
+    transform: translateY(20px);
+    font-family: 'Fira Sans Condensed', sans-serif;
+    
+}
+
+.heading h1{
+    text-shadow: 2px 2px 2px black;
+    font-size: 90px;
+    max-width: 500px;
+    line-height: 1em;
+}
+
+.heading h4{
+    text-shadow: 2px 2px 2px black;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+.chaticon{
+    filter: drop-shadow(0px 0px 4px black);
+    width: 400px;
+    position: absolute;
+    right: 0;
+    margin-top: 20px;
+}
+
+.chat{
+    right: 00px;
+    position: absolute;
+    width: 500px;
+    top: 00px;
+    height: 100%;
+    min-height: 650px;
+    font-family: 'Rubik', sans-serif;
+    background-color: rgba(255, 255, 255, 1);
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-left: 10px solid #0F2027 ;
+    /* background-image: linear-gradient(to left, rgb(56, 56, 56), rgb(218, 213, 213)); */
+
+}
+.chat ul{
+    margin-top: 300px;
+    position: relative;
+    right: 10px;
+}
+.chat ul li{
+    list-style: none;
+    border-radius: 60px;
+    margin-bottom: 4px;
+    padding: 5px;
+}
+
+.chat ul li a{
+    color: #053352;
+    font-weight: 500;
+}
+
+#one, #two, #three, #four{
+    width: fit-content;
+    /* background: linear-gradient(180deg,rgb(44, 185, 250), rgb(32, 50, 99)); */
+    background-color:#05CE91;
+    display: none;
+    color: white;
+    font-weight: 500;
+    padding-right: 15px;
+}
+#one{
+    border-top-left-radius: 0px;
+}
+#dots{
+    display: none;
+    width: fit-content;
+    background: linear-gradient(0deg, #084d27,#2de65b);
+    
+}
+.dot{
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    margin-right: 4px;
+    border-radius: 50%;
+    animation-name: dotsanim;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes dotsanim{
+    0%{opacity: 0.1;}
+    50%{opacity: 1;}
+    100%{opacity: 0.1;}
+}
+@keyframes anim{
+    0%{opacity: 0.1;}
+    50%{opacity: 1;}
+    100%{opacity: 0.1;}
+}
+
+#five{
+    padding-right: 15px;
+    right: 0;
+    position: absolute;
+    background: linear-gradient(180deg, #808183,#2C3E50);
+    border-top-right-radius: 0px;
+    display: none;
+    font-weight: 800;
+}
+
+/* #reg, #login{
+    animation-name: anim;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+} */
+
+
+@media(max-width:1100px){
+    .body{
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        justify-content: center;
+        align-items: center;
+    }
+    .salyicon{
+        position: relative;
+        
+        left: 0;
+        
+    }
+    .heading{
+        place-self: center !important;
+        left: 0;
+        text-align: center !important;
+        transition: 1s;
+    }
+    .chat{
+        top: 100px;
+        position: relative;
+        right: 0;
+        text-align: center;
+        justify-content: center;
+        place-self: center;
+        left: 0px;
+        min-height: fit-content;
+        height: fit-content;
+        padding-bottom: 50px;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 0%;
+        border-top-right-radius: 50%;
+        border-top: 10px solid #0F2027 ;
+        border-left: 0px;
+    }
+    .chat ul{
+        margin-top: 300px;
+    }
+}
+
+@media(max-width:620px){
+    .heading h1{
+        font-size: 70px;
+    }
+}
+@media(max-width:500px){
+    body{
+        overflow-x: hidden;
+    }
+    .salyicon{
+        width: 200px;
+        height: auto;
+        top: 50px;
+    }
+    .heading h1{
+        font-size: 48px;
+        max-width: 400px;
+    }
+    .heading h4{
+        font-size: 15px;
+        max-width: 380px;
+        place-self: center;
+    }
+    .chat{
+        max-width: 300px;
+        font-size: 12px;
+    }
+    .chat ul{
+        margin-top: 20px;
+    }
+    .chaticon{
+        width: 200px;
+        margin-top: 50px;
+        place-self: center;
+        position: relative;
+    }
+}

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Management system</title>
+    <link rel="stylesheet" href="dom-course.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@500&family=PT+Serif&family=Quicksand:wght@300&display=swap');
+
+    
+     .body{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px -150px 100px white;
+    
+}
+body{
+     overflow-x: hidden;   
+}
+
+.coursemenu{
+    background-color: #05CE91;
+    font-family: 'Quicksand', sans-serif;
+    height: 100% !important;
+    width: 300px !important;    
+    color: white;
+    padding-left: 10px;
+}
+
+
+.courselist li{
+    list-style: none;
+    color: white;
+    margin: 2px;
+    width: fit-content;
+}
+
+.lesson1, .prev{
+    display: none;
+}
+.lesson{
+    
+    /* background-color: pink; */
+
+    margin-left: 30px;
+    
+}
+.dash-dp{
+    top: 0;
+    /* background-image: url('dp.JPG'); */
+    z-index: 10;
+    position: fixed;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-size: cover;
+}
+.dash-dp button{
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 100%;
+    border: 2px black solid;
+    cursor: pointer;
+}
+.dash-dp button i{
+    right: 0;
+    font-size:28px;
+    background-color: transparent;
+    
+}
+.viewtask a{
+    text-decoration: underline;
+    color: black;
+    font-size: 20px;
+    font-family:'Fira Sans Condensed' ;
+}
+.lesson1{
+    z-index: 10;
+    /* background-color: pink; */
+    width: 100% ;
+    
+}
+
+.lesson1 h1{
+    margin-left: 0px;    
+}
+
+.lesson1 iframe{
+    width: 800px;
+    height: 500px;
+    border: 2px solid black;
+    padding: 20px;  
+    border-radius: 10px; 
+    margin-bottom: 50px; 
+    margin-right: 200px;
+}
+
+
+.intro{
+    
+    font-family: 'PT Serif', serif;
+}
+.intro h1, .lessonnumber{
+    font-family: 'Encode Sans SC', sans-serif;
+}
+
+#header{
+    position: relative;
+    width: 100vw;
+    height: 90vh;
+    background-image: url(https://buddy.works/guides/covers/test-nodejs-app/share-nodejs-logo.png);
+    background-position: center;
+   background-attachment: fixed;
+    background-size: cover;
+    
+}
+.content{
+    height: auto;
+}
+
+.completedbtn{
+    z-index: 100;
+    border: 2px solid white;
+    background-color: transparent;
+    padding: 10px;
+    margin-left: 30px;
+    border-radius: 9px;
+    transition: 1s;
+}
+.completedbtn a{
+    color: white;
+    text-decoration: none;
+}
+
+.active.completedbtn{
+    background-color: white;
+    color: #05CE91;
+}
+.active.completedbtn a{
+    color: #05CE91;
+}
+
+
+.lessonopen, .buttons button{
+    cursor: pointer;
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: white;
+    background-image: linear-gradient(#05CE91,#1b8537) ;
+    background-color: -internal-light-dark(white, white);
+    border: 1px #41e06c solid;
+}
+
+
+.introopen{
+    padding-bottom: 2px;
+    border-bottom: 2px solid white;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.logout button{
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 100%;
+    border: 2px black solid;
+    cursor: pointer;
+}
+.logout button i{
+    right: 0;
+    font-size:28px;
+    background-color: transparent;
+    
+}
+
+@media(max-width:600px){
+    
+    .coursemenu{
+        height: auto;
+        width: 100%;
+    }
+    .courselist{
+        width: 100%;
+    }
+    .lesson1 iframe{
+        width: 300px;
+        height: auto;
+        margin-left: 20px;
+    }
+    .buttons{
+        max-width: 400px;
+    }
+    .lesson{
+        margin-left: 0;
+        min-width: 100px;
+    }
+    .body{
+        width: 100vw;
+    }
+    #header{
+        height: 40vh;
+    }
+
+}
+
+@media(max-width:1250px){
+    .lesson iframe{
+        width: 600px;
+        height: 400px;
+    }
+}
+@media(max-width:1045px){
+    .lesson iframe{
+        width: 400px;
+        height: 250px;
+    }
+}
+@media(max-width:845px){
+    .body{
+        display: flex;
+        flex-direction: column;
+    }
+    .coursemenu{
+        place-self: center;
+        margin: 0 auto;
+        height: fit-content;
+    }
+    .lesson iframe{
+        width: 600px;
+        height: 400px;
+    }
+    .content{
+        margin-top: 20px;
+        width: 100%;
+        background-color: #05CE91;
+        padding-bottom: 20px;
+    }
+}
+
+@media(max-width:745px){
+    .lesson iframe{
+        width: 400px;
+        height: 250px;
+    }
+    #header{
+        height: 50vh;
+        background-attachment:scroll;
+        background-repeat: no-repeat;
+    }
+}
+
+@media(max-width:500px){
+    .lesson iframe{
+        width: 300px;
+        height: 150px;
+    }
+    .dash-dp{
+                right: 0;
+            }
+            .dash-dp button{
+                padding: 8px;
+            }
+            .dash-dp button i{
+                font-size: 12px;
+            }
+}
+</style>
+
+
+<body>
+    <div id="header"></div>
+    <div class="dash-dp">
+        <p class="viewtask" style="color: black;"><a href="/dashboard">Dashboard</a></p>
+        <a href="/logout"><button><i class="fa fa-sign-out" style="color: black;"></i></button></a>
+      </div>
+    
+    <div class="body">
+        <div class="content">
+            <div class="coursemenu">
+                <h1> Course Contents</h1>
+                <ul class="courselist">
+                    <li class="introopen">Introduction</li>
+                    <li>Lesson 1</li>
+                    <li>Lesson 2</li>
+                    <li>Lesson 3</li>
+                    <li>Lesson 4</li>
+                    <li>Lesson 5</li>
+                    <li>Lesson 6</li>
+                    <li>Lesson 7</li>
+                    <li>Lesson 8</li>
+                </ul>
+                <% user.courses.forEach((obj)=>{ %>
+                    <% if(obj.coursename == "Nodejs"){ %>
+                        <% if(obj.complete == false){ %>
+                            <button id="completedbtn" class="completedbtn"><a id="completed" class="markcomp" href="/courses/nodeedit">Mark Course as completed</a></button>
+                        <% } %>
+                        <% if(obj.complete == true){ %>
+                            <button id="completedbtn" class="completedbtn active"><a id="completed" class="markcomp" href="/courses/nodeedit">Course completed</a></button>
+                        <% } %>
+                    <% } %>
+                <% }) %>
+                
+            </div>
+        </div>
+    
+    
+        <div class="lesson">
+            <div class="lesson">
+                <div class="intro">
+                    <h1>Introduction</h1>
+                    <p>Have you tried to learn Node before? You start a new course, and the instructor has you installing a bunch of libraries before you even know what Node is or how it works. You eventually get stuck and reach out to the instructor, but you get no reply. You then close the course and never open it again.</p>
+
+                        <p>Sound familiar?</p>
+                        
+                       <p> I created this course to be what I wanted when I was learning Node.</p>
+                        
+                        <p>The Complete Node.js Developer Course covers the fundamentals of Node before diving deep into great tools like Express, Mongoose, and MongoDB.</p>
+                        
+                        <p>The entire course is based around a single goal: Turning you into a professional Node developer capable of developing, testing, and deploying real-world production applications.</p>
+                        <p>By the end, you’ll be able to take what you’ve learned and launch your own Node application.</p>
+
+                        <p>When learning, learn the latest.</p>
+
+                        <p>I work to keep this course full of the most up-to-date Node material out there. This course is compatible with the latest Node.js version.</p>
+                    <button class="lessonopen">go to lessons</button>
+                </div>
+                <div id="lesson1" class="lesson1">
+                    <h1 class="lessonnumber">Lesson 1</h1>
+                    <iframe class="lessonvideo" width="560" height="315" src="https://www.youtube.com/embed/RLtyhwFtXQA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="buttons">
+                        <button class="prev"><a href="#"></a> prev</button>
+                        <button class="next">next</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+        const bg = document.querySelector('#header');
+        window.addEventListener('scroll',function(){
+            bg.style.backgroundSize = 100 - +window.pageYOffset/12+'%';
+            bg.style.opacity = 1 - +window.pageYOffset/600+'';
+        })
+        var videolist = ['https://www.youtube.com/embed/RLtyhwFtXQA','https://www.youtube.com/embed/G8uL0lFFoN0', 'https://www.youtube.com/embed/fsCjFHuMXj0', 'https://www.youtube.com/embed/eUYMiztBEdY','https://www.youtube.com/embed/o3ka5fYysBM','https://www.youtube.com/embed/VT674-wB6-Q','https://www.youtube.com/embed/h21pa3yeW08','https://www.youtube.com/embed/gG3pytAY2MY']
+        var lessonnumber = document.querySelector('.lessonnumber')
+        var count = 0;
+        var completedbtn = document.querySelector('#completedbtn');
+        var completed = document.querySelector('#completed');
+        completed.addEventListener('click',coursecompleted);
+        function coursecompleted(){
+        if(completedbtn.className == 'completedbtn'){
+            completedbtn.className = completedbtn.className + ' active';
+            console.log(completedbtn.className)
+            completed.innerHTML = 'Course completed'
+        }else{
+            completedbtn.className = 'completedbtn';
+            console.log(completedbtn.className)
+            completed.innerHTML = 'Mark Course as completed'
+        }
+    }
+        var lessonpage = document.querySelector('.lesson1');
+        var intro = document.querySelector('.intro');
+        var introopen = document.querySelector('.introopen');
+        introopen.addEventListener('click', showintropage);
+        function showintropage(){
+            intro.style.display = 'unset';
+            lessonpage.style.display = 'none'
+        }
+
+
+        var openlesson = document.querySelector('.lessonopen');
+        openlesson.addEventListener('click', showlessonpage);
+        function showlessonpage(){
+            intro.style.display = 'none';
+            lessonpage.style.display = 'unset'
+        }
+
+        var lesson = document.querySelector('.lessonvideo')
+
+        var next = document.querySelector('.next');
+
+        next.addEventListener('click', gotonext);
+
+        function gotonext(){
+            if(count == 7){
+                next.style.display = 'none'
+            }
+            else{
+                count +=1;
+                setTimeout(() => {lesson.src = `${videolist[count]}`;
+                lessonnumber.innerHTML = `Lesson ${count+1}`
+                prev.style.display = 'unset'
+                if(count == 7){
+                    next.style.display = 'none'
+                }else{
+                    next.style.display = 'unset'
+                }
+            },100)
+            }
+        }
+
+        var prev = document.querySelector('.prev');
+
+        prev.addEventListener('click', gotoprev);
+
+        function gotoprev(){
+            if(count == 0){
+                prev.style.display = 'none'
+            }
+            else{
+                count -=1;
+                setTimeout(() => {lesson.src = `${videolist[count]}`;
+                lessonnumber.innerHTML = `Lesson ${count+1}`
+                next.style.display = 'unset'
+                if(count == 0){
+                    prev.style.display = 'none'
+                }else{
+                    prev.style.display = 'unset'
+                }
+            },100)
+            }
+        }
+
+
+    </script>
+</body>
+</html>

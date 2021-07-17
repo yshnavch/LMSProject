@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Management system</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+@import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(180deg, grey, white);
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: rgb(80, 80, 80);
+}
+body {
+
+background-image: url('stacked-peaks-haikei (1).svg');
+background-size: cover;
+background-attachment: fixed;
+background-color: rgb(80, 80, 80);
+}
+.blob{
+    top: 0;
+    left: 0;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(90, 58, 58, 0.1));
+    
+}
+
+.dash-dp{
+    top: 0;
+    /* background-image: url('dp.JPG'); */
+    z-index: 10;
+    position: absolute;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-size: cover;
+}
+.dash-img{
+    /* background-image: url('dp.JPG'); */
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-bottom: 20px;
+    border: 2px white solid;
+    background-size: cover;
+    cursor: pointer;
+}
+
+
+.dash-dp button{
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 100%;
+    border: 2px white solid;
+    cursor: pointer;
+}
+.dash-dp button i{
+    right: 0;
+    font-size:28px;
+    background-color: transparent;
+    
+}
+
+.l-alert{
+    color:orangered;
+    padding-left: 10px;
+}
+.e-alert{
+    color:red;
+    padding-left: 10px;
+}
+.s-alert{
+    color:green;
+    padding-left: 10px;
+    font-size: 18px;
+    padding-bottom: 7px;
+}
+.taskcard{
+    position: absolute;
+   top: 100px;
+    background: rgba( 255, 255, 255, 0 );
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur(5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 1 );
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    width: fit-content;
+    padding: 0 20px;
+    height: auto;
+    transform: translateX(0%);
+    transition: 0.5s;
+}
+.taskbody{
+    margin: 35px 25px;
+    z-index: 10;
+    position: relative;
+    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.heading{
+    position: absolute;
+    top: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.dash-dp{
+    top: 0;
+    /* background-image: url('dp.JPG'); */
+    z-index: 10;
+    position: absolute;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-size: cover;
+}
+.dash-dp button{
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 100%;
+    border: 2px black solid;
+    cursor: pointer;
+}
+.dash-dp button i{
+    right: 0;
+    font-size:28px;
+    background-color: transparent;
+    
+}
+.viewtask a{
+    text-decoration: underline;
+    color: black;
+    font-size: 20px;
+    font-family:'Fira Sans Condensed' ;
+}
+.addtask{
+    border:3px solid  #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+.addtask input{
+    border-style: none;
+    color: black;
+    padding: 5px 5px;
+    /* border-bottom: 2px solid white; */
+    background-color: white;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.taskaddbutton{
+    padding: 2px 10px;
+    border: 2px solid rgb(35, 138, 35);
+    border-style: solid;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(35, 138, 35);
+}
+
+.task{
+    display: flex;
+    padding: 5px;
+    margin: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: black;
+    border-bottom: 4px solid black;
+        
+}
+.task h2{
+    font-family: 'Encode Sans SC', sans-serif;
+    font-size: 18px;
+    margin: auto;
+    position: relative;
+}
+.task h3{
+    font-family: 'Comfortaa', cursive;
+    margin: 0;
+    font-size: 15px
+}
+.stat{
+    font-size: 20px;
+    z-index: 10;
+    padding: 2px;
+    margin: 2px;
+}
+#status{
+    color: rgb(15, 231, 15);
+    z-index: 1000;
+    /* background-color: brown; */
+    cursor: pointer;
+}
+
+.trash{
+    font-size: 20px;
+    z-index: 1000;
+    padding: 2px;
+    margin: 2px;
+}
+#close{
+    font-size: 26px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+/* .notcompleted, #completed{
+    position: absolute;
+} */
+
+/* .task button{
+    margin-top: 15px;
+} */
+.form input{
+    font-size: 14px;
+    height: 30px;
+    width: 80%;
+    outline: none;
+    background-color: rgb(238, 238, 241);
+    border: 2px solid rgb(126, 124, 124);
+    padding: 12px 29px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    transition: 0.3s;
+}
+
+.form input:focus{
+    background-color: white;
+    border: 2px solid #05CE91;
+}
+
+  
+  input[type="file"] {
+    position: absolute;
+    z-index: -1;
+    top: 14px;
+    left: 19px;
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+  }
+  
+  .button-wrap {
+    position: relative;
+  }
+  
+  .new-button {
+      display: inline-block;
+      padding: 6px 10px; 
+      margin: 8px 19px;
+      cursor: pointer;
+      border-radius: 4px;
+      background-color:rgb(175, 219, 175);
+      font-size: 14px;
+      color: #fff;
+  }
+.btn {
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    padding: 3px 12px;
+    background:#04aa78;
+    border: 1px solid #04aa78 ;
+    width: 50%;
+    height: 35px;
+    margin: 0px 25%;
+    border-radius: 15px;
+    
+    margin-bottom: 10px;
+}
+label{
+    font-size: 15px;
+    padding-left: 10px;
+
+}
+@media(max-width:500px){
+  .dash-dp{
+    right: 0;
+  }
+  
+  .dash-dp button{
+    padding: 8px;
+  }
+  .dash-dp button i{
+    font-size: 12px;
+  }
+  .taskcard{
+    max-width:300px
+  }
+  .form input{
+    height: 20px;
+    padding: 12px 19px;
+  }
+  .taskbody{
+    margin: 35px 5px;
+  }
+  .btn{
+    font-size: 15px;
+  }
+}
+</style>
+<body>
+    
+    <div class="dash-dp">
+      <p class="viewtask" style="color: black;"><a href="/dashboard">Dashboard</a></p>
+      <a href="/logout"><button><i class="fa fa-sign-out" style="color: black;"></i></button></a>
+    </div>
+    <div class="heading">
+      <h1 style="color: #05CE91;">Edit Application</h1>
+    </div>
+    <div class="taskcard">
+        
+      <div class="taskbody">
+        <%- include('./partials/messages'); %>
+        <form action="/edit" method="POST" enctype="multipart/form-data">
+          <div class="form">
+            <label for="name">Name</label>
+            <input
+              type="name"
+              id="name"
+              name="name"
+              placeholder="Enter Name"
+              value="<%= user.name %>"
+              required
+            />
+          </div>
+          <div class="form">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter Email"
+              value="<%= user.email %>"
+              required
+            />
+          </div>
+
+          <div class="form">
+            <label for="contact">Contact</label>
+            <input
+              type="tel"
+              id="contact"
+              name="contact"
+              placeholder="Enter contact number"
+              value="<%= user.contact %>"
+              required
+            />
+          </div>
+          <div class="form">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Create new Password"
+              required
+            />
+          </div>
+          
+          <div>
+            <label for="file">Upload image</label>
+              <div class="button-wrap">
+                <label class ="new-button" for="file"> Choose file
+                <input
+                  type="file"
+                  id="file"
+                  name="file"
+                
+                >
+             </div>
+            
+          </div>
+          <button type="submit" class="btn">
+            Update profile
+          </button>
+        </form>
+           
+              
+          
+          
+          
+      </div>
+  </div> 
+    
+    
+
+    
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Management system</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@700&family=Poppins:wght@200&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+  
+  body{
+      
+      background: url('low-poly-grid-haikei.svg') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+      
+  }
+  .loginicon{
+      width: 600px;
+      height: 500px;
+      display: block;
+      position: absolute;
+      top: 80px;
+      opacity: 0.8;
+  }
+  .icon{
+      
+      top: 100px;
+      position: absolute;
+      margin-left: 130px;
+      filter: drop-shadow(-6px -2px 2px black);
+      
+  
+  }
+  .iconbg{
+      /* box-shadow: inset 2px 2px 12px black; */
+      width: 450px;
+      height: 450px;
+      background-color: rgba(255, 255, 255, 0.788);
+      position: absolute;
+      margin-left: 200px;
+      top: 100px;
+      border-radius: 100%;
+  
+  }
+  .button{
+      cursor: pointer;
+      padding: 10px 22px;
+      border-radius: 10px;
+      font-size: 20px;
+      color: white;
+      background: #1cf757;
+      background-color: -internal-light-dark(white, white);
+      border: 1px #41e06c solid;
+  }
+  
+  .heading{
+      color: white;
+      text-align: center;
+      place-self: center;
+      position:relative;
+      /* max-width: 400px; */
+      top: 0;
+      /* transform: translate(00px,00px); */
+      transition: 3s;
+      opacity: 1;
+      transform: translateY(20px);
+      font-family: 'Fira Sans Condensed', sans-serif;
+      
+  }
+  
+  .heading h1{
+      text-shadow: 2px 2px 2px black;
+      font-size: 30px;
+      max-width: 500px;
+      line-height: 1em;
+  }
+  .welcomeback{
+      color: white;
+      position: absolute;
+      margin-top: 150px;
+      margin-left: 100px;
+      text-shadow: 2px 2px 2px #0F2027;
+  }
+  
+  .chat{
+      right: 0px;
+      position: absolute;
+      width: 500px;
+      top: 0px;
+      height: 100vh;
+      min-height: 700px;
+      font-family: 'Rubik', sans-serif;
+      background-color: rgba(255, 255, 255, 1);
+      border-top-left-radius: 50%;
+      border-bottom-left-radius: 50%;
+      border-left: 10px solid #0F2027 ;
+      /* background-image: linear-gradient(to left, rgb(56, 56, 56), rgb(218, 213, 213)); */
+  
+  }
+  
+  .chat form{
+      margin-top: 150px;
+      left: 50px;
+      position: relative;
+  }
+  .chat form h2{
+      place-self: center;
+      position: relative;
+      font-size: 40px;
+      margin-left: 30px;
+      /* text-align: center; */
+      
+  }
+  
+  .formgroup{
+      color: black;
+      font-size: 18px;
+      margin-bottom: 10px;
+  }
+  
+  .formgroup input[type="email"]{
+      margin-left: 5px;
+      height:18px;
+      border: 1px solid;
+      border-radius: 6px;
+      font-size: 19px;
+      padding: 10px 29px;
+      width:50%;
+      background-color: rgba(255, 255, 255, 0.712);
+  }
+  .formgroup input[type="tel"]{
+      margin-left: 5px;
+      height:18px;
+      border: 1px solid;
+      border-radius: 6px;
+      font-size: 19px;
+      padding: 10px 29px;
+      width:50%;
+      background-color: rgba(255, 255, 255, 0.712);
+  }
+  .formgroup input[type="name"]{
+      margin-left: 5px;
+      height:18px;
+      border: 1px solid;
+      border-radius: 6px;
+      font-size: 19px;
+      padding: 10px 29px;
+      width:50%;
+      background-color: rgba(255, 255, 255, 0.712);
+  }
+  .formgroup input[type="password"]{
+      margin-left: 5px;
+      height:18px;
+      border: 1px solid;
+      border-radius: 6px;
+      font-size: 19px;
+      padding: 10px 29px;
+      width:50%;
+      background-color: rgba(255, 255, 255, 0.712);
+  }
+  .formgroup input:focus{
+      /* outline-color: rgb(0, 183, 255); */
+      outline-color:green;
+      outline-style: auto;
+      border: 4px blue;
+  }
+  input[type="file"] {
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    display: flex;
+    margin: 10px 0px 0px 10px;
+  }
+  .formgroup label{
+    margin:2px 0px 5px 10px; 
+  }
+  .new-button {
+      display: inline-block;
+      padding: 8px 12px; 
+      margin: 8px 19px;
+      cursor: pointer;
+      border-radius: 4px;
+      background-color:rgb(175, 219, 175);
+      font-size: 16px;
+      color: #111;
+  }
+  .noaccount{
+      margin-left: 10px;
+      font-size: 20px;
+  }
+  .noaccount a{
+      color: green;
+      font-weight: 600;
+      font-size: 20px;
+      text-decoration: underline;
+  }
+  .l-alert{
+    color:orangered;
+    padding-left: 10px;
+}
+.e-alert{
+    color:red;
+    padding-left: 10px;
+}
+.s-alert{
+    color:green;
+    padding-left: 10px;
+    font-size: 18px;
+    padding-bottom: 7px;
+}
+  
+  @media(max-width:1150px){
+      .body{
+          display: flex;
+          flex-direction: column-reverse;
+          overflow-x: hidden;
+  
+          
+      }
+      .heading{
+          place-self: center;
+          left: 0;
+          text-align: center;
+          transition: 1s;
+      }
+      .chat{
+          top: 100px;
+          position: relative;
+          right: 0;
+          text-align: center;
+          justify-content: center;
+          place-self: center;
+          left: 0px;
+          min-height: fit-content;
+          height: fit-content;
+          padding-bottom: 50px;
+          border-top-left-radius: 50%;
+          border-bottom-left-radius: 0%;
+          border-top-right-radius: 50%;
+          border-top: 10px solid #0F2027 ;
+          border-left: 0px;
+      }
+      input[type="file"] {
+        margin-left:70px ;
+      }
+      .formgroup label{
+        margin-right: 160px; 
+      }
+      .chat form{
+          position: relative;
+          margin-top: 0px;
+          
+      }
+      .chat form h2{
+        margin-right: 100px;
+      }
+      .loginbottom{
+        margin-left: 25px;
+      }
+      .formgroup{
+        margin-right: 100px;
+      }
+      .loginicon{
+          margin-left: 20px;
+          position: relative;
+          place-self: center;
+          display:none;
+      }
+      .icon{
+          top: 0;
+          position: relative;
+          margin-left: 0;
+          display: none;
+      }
+      .iconbg{
+          top: 0%;
+          /* position: relative; */
+          margin-left: 50px;
+          place-self: center;
+      }
+  
+      .welcomeback{
+          position: relative;
+          margin-top: 20px;
+          margin-left: 0px;
+          place-self: center;
+          text-align: center;
+      }
+  
+  }
+  
+  
+  @media(max-width:500px){
+      body{
+          overflow-x: hidden;
+          
+      }
+      .heading h1{
+          font-size: 28px;
+          max-width: 300px;
+      }
+      .heading h4{
+          font-size: 15px;
+          max-width: 380px;
+          place-self: center;
+      }
+      .chat{
+          max-width: 300px;
+          font-size: 12px;
+          top:50px
+      }
+      .chat form{
+        top:20px
+      }
+      .chat form h2{
+        font-size: 25px;
+      }
+      .welcomeback{
+          font-size: 15px;
+          max-width: 300px;
+          text-align: center;
+      }
+      .formgroup{
+          font-size: 15px;
+  
+      }
+      .formgroup label{
+        margin-right: 0px; 
+        margin-left: -100px;
+      }
+      input[type="file"] {
+        margin-left:0px ;
+        font-size: 13px;
+      }
+      .formgroup input[type=name]{
+          font-size: 14px;
+          height:18px;
+          width:75%;
+          padding-left: 15px;
+      }
+      .formgroup input[type=email]{
+          font-size: 14px;
+          height:18px;
+          width:75%;
+          padding-left: 15px;
+      }
+      .formgroup input[type=tel]{
+          font-size: 14px;
+          height:18px;
+          width:75%;
+          padding-left: 15px;
+      }
+      .formgroup input[type=password]{
+          font-size: 14px;
+          height:18px;
+          width:75%;
+          padding-left: 15px;
+      }
+      .button{
+        font-size: 15px;
+        padding:5px 10px
+      }
+      .noaccount{
+        margin-left: 6px;
+        font-size: 13px;
+      }
+      .noaccount a{
+        font-size: 13px;
+            
+      }
+      .loginbottom{
+        margin-left: -15px;
+      }
+      .loginicon{
+        transform: scale(0.6);
+        top: 0;
+          
+      }
+  }
+  </style>
+<body class="body active">
+  <div class="loginicon">
+        <div class="iconbg"></div>
+        <img class="icon" src="/Userrafiki.png" alt="" style="width:500px">
+        </div>
+       
+        
+        <div class="chat">
+        
+            <form action="/register" method="POST" enctype="multipart/form-data">
+                <h2>Register <i class='fa fa-user-plus'></i></h2>
+                
+                  <%- include ("./partials/messages"); %>
+                
+                
+                <div class="formgroup">
+                  <input
+                    type="name"
+                    id="name"
+                    name="name"
+                    placeholder="Enter Name"
+                    
+                  />
+                </div>
+                <div class="formgroup">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter Email"
+                    
+                  />
+                </div>
+                <div class="formgroup">
+                  <input
+                    type="tel"
+                    id="contact"
+                    name="contact"
+                    placeholder="Enter contact number"
+                  />
+                </div>
+                <div class="formgroup">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create Password"
+                    
+                  />
+                </div>
+               
+                 <div class="formgroup">
+                  <label for="file">Profile photo</label>
+                    <input
+                      type="file"
+                      id="file"
+                      name="file"
+                      accept="image/png, image/jpg, image/jpeg"
+                      required
+                      
+                    />
+                </div> 
+                <div class="loginbottom" style="display: flex; align-items: baseline;">
+                    <button type="submit" class="button">
+                        Register
+                      </button>
+                      <p class="noaccount">Have An Account? <a href="/login">Login</a></p>
+                </div>
+                
+              </form>
+              
+        </div>
+        <div class="heading">
+            <h1>Learning Management System</h1>
+            <!-- <h4>Find courses to learn and keep improving</h4> -->
+        </div>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
