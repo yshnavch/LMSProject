@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose
   .connect(
-    'mongodb://localhost/majorProject',
+    'mongodb+srv://vaishnavi:vaishnavi@cluster0.qyjqk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     { useNewUrlParser: true ,useUnifiedTopology: true}
   )
   .then(() => console.log('MongoDB Connected'))
