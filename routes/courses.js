@@ -16,7 +16,7 @@ router.get('/dom',ensureAuthenticated,(req,res)=>{
         })
         if(found== true){
             res.render('dom',{
-                user:req.user
+                user:data
               })
         }
         else{
@@ -26,7 +26,7 @@ router.get('/dom',ensureAuthenticated,(req,res)=>{
             })
             data.save().then(()=>{
                 res.render('dom',{
-                    user:req.user
+                    user:data
                   })
             }).catch(err => console.log(err));
         }
@@ -73,7 +73,7 @@ router.get('/js',ensureAuthenticated,(req,res)=>{
         })
         if(found== true){
             res.render('javascript',{
-                user:req.user
+                user:data
               })
         }
         else{
@@ -83,7 +83,7 @@ router.get('/js',ensureAuthenticated,(req,res)=>{
             })
             data.save().then(()=>{
                 res.render('javascript',{
-                    user:req.user
+                    user:data
                   })
             }).catch(err => console.log(err));
         }
@@ -130,7 +130,7 @@ router.get('/node',ensureAuthenticated,(req,res)=>{
         })
         if(found== true){
             res.render('nodejs',{
-                user:req.user
+                user:data
               })
         }
         else{
@@ -140,7 +140,7 @@ router.get('/node',ensureAuthenticated,(req,res)=>{
             })
             data.save().then(()=>{
                 res.render('nodejs',{
-                    user:req.user
+                    user:data
                   })
             }).catch(err => console.log(err));
         }
